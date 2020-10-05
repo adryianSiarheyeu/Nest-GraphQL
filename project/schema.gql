@@ -10,7 +10,6 @@ type CreateUserDto {
 }
 
 type Query {
-  hello: String!
   users: [CreateUserDto!]!
 }
 
