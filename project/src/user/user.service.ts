@@ -14,6 +14,14 @@ export class UserService {
     return await createdUser.save();
   }
 
+  async remove(id: string): Promise<User> {
+    return await this.userModel.findOneAndRemove({ _id: id });
+  }
+
+  async findById(id: string): Promise<User> {
+    return await this.userModel.findById(id);
+  }
+
   async findAll(): Promise<User[]> {
     return await this.userModel.find();
   }

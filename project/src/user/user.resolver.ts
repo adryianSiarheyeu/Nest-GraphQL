@@ -11,6 +11,11 @@ export class UserResolver {
     return this.userService.findAll();
   }
 
+  @Query(() => CreateUserDto)
+  async findUserById(@Args('id') id: string) {
+    return this.userService.findById(id);
+  }
+
   @Mutation(() => CreateUserDto)
   async createUser(
     @Args('name') name: string,
@@ -18,5 +23,10 @@ export class UserResolver {
     @Args('age') age: number,
   ) {
     return this.userService.create({ name, gender, age });
+  }
+
+  @Mutation(() => CreateUserDto)
+  async removeUser(@Args('id') id: string) {
+    return this.userService.remove(id);
   }
 }

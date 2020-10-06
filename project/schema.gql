@@ -11,8 +11,10 @@ type CreateUserDto {
 
 type Query {
   users: [CreateUserDto!]!
+  findUserById(id: String!): CreateUserDto!
 }
 
 type Mutation {
   createUser(age: Float!, gender: String!, name: String!): CreateUserDto!
+  removeUser(id: String!): CreateUserDto!
 }
