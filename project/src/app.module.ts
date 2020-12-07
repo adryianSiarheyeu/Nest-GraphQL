@@ -9,9 +9,10 @@ import { GraphQLModule } from '@nestjs/graphql';
   imports: [
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql',
+      playground: true,
     }),
     MongooseModule.forRoot(
-      'mongodb+srv://adrik:123@cluster0.wjk8u.mongodb.net/test?retryWrites=true&w=majority',
+      'mongodb+srv://adrik:123@graph.wjk8u.mongodb.net/test?retryWrites=true&w=majority',
     ),
     UserModule,
   ],
