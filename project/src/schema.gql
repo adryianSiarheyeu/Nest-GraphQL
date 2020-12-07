@@ -1,0 +1,61 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateHobbyInput {
+  description: String!
+}
+
+input CreateUserInput {
+  hobbies: [String!]!
+  name: String!
+}
+
+type Hobby {
+  _id: String!
+  description: String!
+}
+
+input ListHobbyInput {
+  _id: String!
+  description: String!
+}
+
+input ListUserInput {
+  _id: String!
+  hobbies: [String!]!
+  name: String!
+}
+
+type Mutation {
+  createHobby(payload: CreateHobbyInput!): Hobby!
+  createUser(payload: CreateUserInput!): User!
+  removeHobby(_id: String!): Hobby!
+  removeUser(_id: String!): User!
+  updateHobby(payload: UpdateHobbyInput!): Hobby!
+  updateUser(payload: UpdateUserInput!): User!
+}
+
+type Query {
+  hobbies(filters: ListHobbyInput): [Hobby!]!
+  hobby(_id: String!): Hobby!
+  user(_id: String!): User!
+  users(filter: ListUserInput): [User!]!
+}
+
+input UpdateHobbyInput {
+  _id: String!
+  description: String!
+}
+
+input UpdateUserInput {
+  _id: String!
+  hobbies: [String!]!
+  name: String!
+}
+
+type User {
+  _id: String!
+  hobbies(populate: Boolean!): [Hobby!]!
+  name: String!
+}
