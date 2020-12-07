@@ -2,19 +2,60 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type CreateUserDto {
-  id: ID!
+type Hobby {
+  _id: String!
+  description: String!
+}
+
+type User {
+  _id: String!
   name: String!
-  age: Int!
-  gender: String!
+  hobbies: [String!]!
 }
 
 type Query {
-  users: [CreateUserDto!]!
-  findUserById(id: String!): CreateUserDto!
+  user(_id: String!): User!
+  users(filter: ListUserInput): [User!]!
+  hobby(_id: String!): Hobby!
+  hobbies(filters: ListHobbyInput): [Hobby!]!
+}
+
+input ListUserInput {
+  _id: String!
+  name: String!
+  hobbies: [String!]!
+}
+
+input ListHobbyInput {
+  _id: String!
+  description: String!
 }
 
 type Mutation {
-  createUser(age: Float!, gender: String!, name: String!): CreateUserDto!
-  removeUser(id: String!): CreateUserDto!
+  createUser(payload: CreateUserInput!): User!
+  updateUser(payload: UpdateUserInput!): User!
+  removeUser(_id: String!): User!
+  createHobby(payload: CreateHobbyInput!): Hobby!
+  updateHobby(payload: UpdateHobbyInput!): Hobby!
+  removeHobby(_id: String!): Hobby!
+}
+
+input CreateUserInput {
+  name: String!
+  hobbies: [String!]!
+}
+
+input UpdateUserInput {
+  _id: String!
+  name: String!
+  hobbies: [String!]!
+}
+
+input CreateHobbyInput {
+  description: String!
+}
+
+input UpdateHobbyInput {
+  _id: String!
+  description: String!
 }

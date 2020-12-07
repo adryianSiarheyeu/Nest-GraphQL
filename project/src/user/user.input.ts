@@ -1,13 +1,35 @@
-import { InputType, Field, Int } from 'type-graphql';
+import { Field, InputType } from '@nestjs/graphql';
+import { Types } from 'mongoose';
 
 @InputType()
-export class UserInput {
-  @Field()
-  readonly name: string;
+export class CreateUserInput {
+  @Field(() => String)
+  name: string;
 
-  @Field(() => Int)
-  readonly age: number;
+  @Field(() => [String])
+  hobbies: Types.ObjectId[];
+}
 
-  @Field()
-  readonly gender: string;
+@InputType()
+export class ListUserInput {
+  @Field(() => String)
+  _id: Types.ObjectId;
+
+  @Field(() => String)
+  name?: string;
+
+  @Field(() => [String])
+  hobbies?: Types.ObjectId[];
+}
+
+@InputType()
+export class UpdateUserInput {
+  @Field(() => String)
+  _id: Types.ObjectId;
+
+  @Field(() => String)
+  name?: string;
+
+  @Field(() => [String])
+  hobbies?: Types.ObjectId[];
 }
