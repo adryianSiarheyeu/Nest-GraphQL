@@ -44,12 +44,18 @@ export class UserResolver {
   @ResolveField()
   async hobbies(
     @Parent() user: UserDocument,
-    @Args('populate') populate: boolean,
+    @Args({
+      name: 'populate',
+      nullable: true,
+      defaultValue: true,
+    })
+    populate: boolean,
   ) {
-    if (populate)
+    if (populate) {
       await user
         .populate({ path: 'hobbies', model: Hobby.name })
         .execPopulate();
+    }
 
     return user.hobbies;
   }
