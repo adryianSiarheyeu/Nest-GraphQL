@@ -50,8 +50,8 @@ input UpdateHobbyInput {
 
 input UpdateUserInput {
   _id: String!
-  hobbies: [String!]!
-  name: String!
+  hobbies: [String!]
+  name: String
 }
 
 type User {

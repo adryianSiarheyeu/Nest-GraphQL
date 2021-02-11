@@ -7,6 +7,7 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import { Types } from 'mongoose';
+
 import { User, UserDocument } from './user.model';
 import { UserService } from './user.service';
 import { CreateUserInput, ListUserInput, UpdateUserInput } from './user.input';
@@ -46,7 +47,6 @@ export class UserResolver {
     @Parent() user: UserDocument,
     @Args({
       name: 'populate',
-      nullable: true,
       defaultValue: true,
     })
     populate: boolean,

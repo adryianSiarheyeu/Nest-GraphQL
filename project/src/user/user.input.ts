@@ -27,9 +27,13 @@ export class UpdateUserInput {
   @Field(() => String)
   _id: Types.ObjectId;
 
-  @Field(() => String)
-  name?: string;
+  @Field(() => String, {
+    nullable: true,
+  })
+  name: string;
 
-  @Field(() => [String])
-  hobbies?: Types.ObjectId[];
+  @Field(() => [String], {
+    nullable: true,
+  })
+  hobbies: Types.ObjectId[];
 }
